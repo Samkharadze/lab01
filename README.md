@@ -11,62 +11,110 @@
 ## Tutorial
 
 ```bash
-$ export GITHUB_USERNAME=<имя_пользователя>
-$ export GIST_TOKEN=<сохраненный_токен>
-$ alias edit=<nano|vi|vim|subl>
+#Мы присваиваем переменной GITHUB_USERNAME свое имя пользователя на GITHUB
+$ export GITHUB_USERNAME=Samkharadze
+#Вводим для переменной GIST_TOKEN созданный токен
+$ export GIST_TOKEN=34629f638a8632738ea4b43ece675d44527ed28e
+#Биндим команду edit с вызовом редактора Nano
+$ alias edit=nano
 ```
 
 ```ShellSession
-$ mkdir -p ${GITHUB_USERNAME}/workspace
-$ cd ${GITHUB_USERNAME}/workspace
+#Создаем директорию с нашим именем пользователся со вложенной папкой workspace
+$ mkdir -p ${Samkharadze}/workspace
+#Переходим в созданный каталог
+$ cd ${Samkharadze}/workspace
+#Выводим полный путь до текущей директории
 $ pwd
+#Возвращаемся в предыдущую папку
 $ cd ..
+#Выводим полный путь до текущей директории
 $ pwd
 ```
 
 ```ShellSession
+#Создаем каталоги используя флаг-p
 $ mkdir -p workspace/tasks/
 $ mkdir -p workspace/projects/
 $ mkdir -p workspace/reports/
+#Переходим в главный каталог
 $ cd workspace
 ```
 
 ```ShellSession
 # Debian
+ # Скачать указанный файл
 $ wget https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
+--2019-03-04 18:34:49--  https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
+Распознаётся nodejs.org (nodejs.org)… 104.20.22.46, 104.20.23.46, 2606:4700:10::6814:172e, ...
+Подключение к nodejs.org (nodejs.org)|104.20.22.46|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 9356460 (8,9M) [application/x-xz]
+Сохранение в: «node-v6.11.5-linux-x64.tar.xz»
+
+node-v6.11.5-linux- 100%[===================>]   8,92M   911KB/s    за 8,9s    
+
+2019-03-04 18:34:59 (1,00 MB/s) - «node-v6.11.5-linux-x64.tar.xz» сохранён [9356460/9356460]
+# Разархивировать архив
 $ tar -xf node-v6.11.5-linux-x64.tar.xz
+#Удалить архив
 $ rm -rf node-v6.11.5-linux-x64.tar.xz
+#Переименовать папку с nodejs
 $ mv node-v6.11.5-linux-x64 node
 ```
 
 ```ShellSession
+#Вывод директорий и файлов в папке node/bin
 $ ls node/bin
+#Вывод переменной окружения PATH
 $ echo ${PATH}
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+#Дописать в PATH папку с node js
 $ export PATH=${PATH}:`pwd`/node/bin
+#Вывод переменной окружения PATH
 $ echo ${PATH}
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/workspace/node/bin
+#Создать папку /Samkharadze/workspace/scripts
 $ mkdir scripts
+#Запись указанной строки в файл /Samkharadze/workspace/scripts/activate
 $ cat > scripts/activate<<EOF
 export PATH=\${PATH}:`pwd`/node/bin
 EOF
+#Выполнить указанный скрипт
 $ source scripts/activate
 ```
 
 ```ShellSession
+#
 $ npm install -g gistup
+/usr/bin/gistup -> /usr/lib/node_modules/gistup/bin/gistup
+/usr/bin/gistup-open -> /usr/lib/node_modules/gistup/bin/gistup-open
+/usr/bin/gistup-rename -> /usr/lib/node_modules/gistup/bin/gistup-rename
+/usr/lib
+└─┬ gistup@0.1.3 
+  ├─┬ optimist@0.3.7 
+  │ └── wordwrap@0.0.3 
+  └── queue-async@1.2.1 
+ 
 $ ls node/bin
+node  npm
+
 ```
 
 ```ShellSession
+
 $ cat > ~/.gistup.json <<EOF
-{
-  "token": "${GIST_TOKEN}"
-}
-EOF
+> {
+>   "token": "${GIST_TOKEN}"
+> }
+> EOF
+
 ```
 
 ## Report
 
 ```ShellSession
+#
 $ export LAB_NUMBER=01
 $ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER}
 $ mkdir reports/lab${LAB_NUMBER}
