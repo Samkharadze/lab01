@@ -14,10 +14,10 @@
 $ export GITHUB_USERNAME=Samkharadze
 
 # Вводим для переменной GIST_TOKEN созданный токен для работы с Gist'ами
-$ export GIST_TOKEN=dc23a14ac4edbeec02f33d7e3a960f6492653c7a 
+$ export GIST_TOKEN=8e68492f2042a25792EOF12fe3f1089fa677e1f3815
 
 # Биндим команду edit с вызовом редактора nano
-$ alias edit=atom #
+$ alias edit=nano
 
 # Создаем директорию с нашим именем пользователя и со вложенной папкой workspace
 $ mkdir -p Samkharadze/workspace
